@@ -37,17 +37,38 @@
             android:textSize="16sp"/>
 
         <Button
-            android:layout_width="100dp"
+            android:id="@+id/bt_p02_signin"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="60px"
-            android:background="@color/darkyellow"
             android:text="Sign In"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24dp"
             tools:ignore="TextContrastCheck" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have an acoount?"
+                />
+            <TextView
+                android:id="@+id/et_p02_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register here"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

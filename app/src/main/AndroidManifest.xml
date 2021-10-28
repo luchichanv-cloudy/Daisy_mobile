@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Daisy_mobile">
         <activity
+            android:name=".p05_search"
+            android:exported="true" />
+        <activity
+            android:name=".p03_signup"
+            android:exported="true" />
+        <activity
             android:name=".p02_signin"
             android:exported="true" />
         <activity
