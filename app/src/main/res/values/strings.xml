@@ -6,4 +6,6 @@
     <string name="title_order">Your Order</string>
     <string name="title_setting">Setting</string>
     <string name="title_favorite">Favorite</string>
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
 </resources>
