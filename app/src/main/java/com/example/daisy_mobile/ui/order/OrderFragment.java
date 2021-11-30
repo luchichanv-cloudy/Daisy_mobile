@@ -1,4 +1,4 @@
-package com.example.daisy_mobile.ui.dashboard;
+package com.example.daisy_mobile.ui.order;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,24 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.daisy_mobile.R;
-import com.example.daisy_mobile.databinding.FragmentDashboardBinding;
 
-public class DashboardFragment extends Fragment {
+import com.example.daisy_mobile.databinding.FragmentOrderBinding;
 
-    private DashboardViewModel dashboardViewModel;
-    private FragmentDashboardBinding binding;
+public class OrderFragment extends Fragment {
+
+    private OrderViewModel orderViewModel;
+    private FragmentOrderBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        orderViewModel =
+                new ViewModelProvider(this).get(OrderViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentOrderBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        orderViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
