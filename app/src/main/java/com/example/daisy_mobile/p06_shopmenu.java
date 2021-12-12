@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class p05_search extends AppCompatActivity {
+public class p06_shopmenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_p05_search);
+        setContentView(R.layout.activity_p06_shopmenu);
     }
 }

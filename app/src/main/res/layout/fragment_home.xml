@@ -7,20 +7,10 @@
     android:layout_weight="1"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
 
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -48,6 +38,23 @@
             />
         <!-- more attributes ... -->
         />
+
     </LinearLayout>
+    <ImageView
+        android:id="@+id/p04_png"
+        android:layout_width="match_parent"
+        android:layout_height="246dp"
+        android:src="@drawable/p04"
+        app:layout_constraintTop_toBottomOf="@+id/ll"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+        android:text="  Recommend"
+        android:textColor="@color/orangeyellow"
+        app:layout_constraintTop_toBottomOf="@+id/p04_png"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
