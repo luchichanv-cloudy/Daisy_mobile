@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".p04_main">
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/orangeyellow"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:layout_width="321dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_editext"
+            android:backgroundTint="#E5E5E5"
+            android:hint="Search for food or restaurant"
+            android:textAlignment="center"></EditText>
+
+        <ImageButton
+            android:id="@+id/ib_p04_search"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/orangeyellow"
+            android:src="@drawable/ic_search_foreground"
+            tools:layout_editor_absoluteX="37dp"
+            tools:layout_editor_absoluteY="124dp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/p04_png"
+        android:layout_width="match_parent"
+        android:layout_height="246dp"
+        android:src="@drawable/p04"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+        android:text="  Recommend"
+        android:textColor="@color/orangeyellow"
+        app:layout_constraintTop_toBottomOf="@+id/p04_png"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="34dp"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:gravity="center_horizontal"
+            android:background="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home_black_24dp" />
+
+        <ImageButton
+            android:gravity="center_horizontal"
+            android:background="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_favorite"
+
+            android:layout_weight="1"/>
+        <ImageButton
+            android:gravity="center_horizontal"
+            android:background="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:src="@drawable/ic_baseline_shopping_cart_24"
+            android:layout_weight="1"/>
+        <ImageButton
+
+            android:gravity="center_horizontal"
+            android:background="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            android:layout_weight="1"/>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
