@@ -1,5 +1,7 @@
 package com.example.daisy_mobile;
 
+import static com.example.daisy_mobile.p02_signin.user_id;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -99,6 +101,7 @@ public class p03_signup extends AppCompatActivity {
                                             user User = new user(name,address,email,phonenumber);
                                             //lay id cua user authentication
                                             String Id=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                            user_id=Id;
                                             //luu data vao firestore database voi custom id
                                             db.collection("users").document(Id).set(User);
                                         }
@@ -106,6 +109,7 @@ public class p03_signup extends AppCompatActivity {
                                             kitchen User = new kitchen(name,address,email,phonenumber);
                                             //lay id cua user authentication
                                             String Id=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                            user_id=Id;
                                             //luu data vao firestore database voi custom id
                                             db.collection("kitchens").document(Id).set(User);
                                         };
@@ -114,7 +118,7 @@ public class p03_signup extends AppCompatActivity {
 
 
                                        // addDataToFirestore(inputName.toString(),inputAddress.toString(),inputEmail.toString(),inputPhonenumber.toString());
-                                        startActivity(new Intent(p03_signup.this, p02_signin.class));
+                                        startActivity(new Intent(p03_signup.this, uploadava.class));
                                         finish();
                                     }
                                 }

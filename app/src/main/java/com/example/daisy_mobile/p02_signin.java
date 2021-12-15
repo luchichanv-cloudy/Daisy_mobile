@@ -27,7 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 
 public class p02_signin extends AppCompatActivity {
-
+    public static String user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +83,7 @@ public class p02_signin extends AppCompatActivity {
                                         Toast.makeText(p02_signin.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
+                                     user_id = auth.getCurrentUser().getUid();
                                     Intent intent = new Intent(p02_signin.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
