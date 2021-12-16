@@ -3,32 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.17864583333333334" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.17864583333333334" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.17864583333333334" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1125" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/drawable/ic_search_foreground.xml" value="0.2203125" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/drawable/rounded_editext.xml" value="0.2046875" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/layout/activity_p02_signin.xml" value="0.1821705426356589" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/layout/activity_p03_signup.xml" value="0.2" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/layout/activity_p05_search.xml" value="0.11096014492753623" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/layout/favourite_fragment.xml" value="0.1" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/layout/fragment_dashboard.xml" value="0.11096014492753623" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/layout/fragment_notifications.xml" value="0.11096014492753623" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/layout/fragment_order.xml" value="0.1" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.18177083333333333" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1125" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/mipmap-anydpi-v26/ic_search.xml" value="0.2203125" />
-        <entry key="..\:/2_PTUDDD_NT118/doan/Daisy_mobile/app/src/main/res/mipmap-anydpi-v26/ic_search_round.xml" value="0.2203125" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/drawable/activedot.xml" value="0.10520833333333333" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/drawable/inactivedot.xml" value="0.10520833333333333" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activedot.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_kitchen_main.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_p02_signin.xml" value="0.20416666666666666" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_p03_signup.xml" value="0.20416666666666666" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_p04_main.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_p05_search.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_p05_searchresult.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_p06_shopmenu.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_p07_fooditem.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_p16_favorite.xml" value="0.20416666666666666" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_uploadava.xml" value="0.22" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/favourite_fragment.xml" value="0.25" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/fragment_order.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/inactivedot.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/p02_signin.xml" value="0.11730072463768115" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/topfavoritekitchen.xml" value="0.20416666666666666" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/menu/kitchen_nav_menu.xml" value="0.1" />
         <entry key="..\:/2_PTUDDD_NT118/doan/javaver/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/2_PTUDDD_NT118/doan/javaver/app/src/main/res/layout/fragment_dashboard.xml" value="0.12771739130434784" />
         <entry key="..\:/2_PTUDDD_NT118/doan/javaver/app/src/main/res/layout/fragment_home.xml" value="0.12771739130434784" />
         <entry key="..\:/UIT/Mobile/app/src/main/res/drawable-anydpi/ic_account.xml" value="0.14635416666666667" />
-        <entry key="..\:/UIT/Mobile/app/src/main/res/drawable-anydpi/ic_mail.xml" value="0.14270833333333333" />
-        <entry key="..\:/UIT/Mobile/app/src/main/res/drawable-anydpi/ic_phone.xml" value="0.14270833333333333" />
         <entry key="..\:/UIT/Mobile/app/src/main/res/drawable-anydpi/ic_shopcart.xml" value="0.14635416666666667" />
         <entry key="..\:/UIT/Mobile/app/src/main/res/drawable-v24/ic_baseline_favorite_24.xml" value="0.14635416666666667" />
         <entry key="..\:/UIT/Mobile/app/src/main/res/drawable-v24/ic_home_black_24dp.xml" value="0.14635416666666667" />
@@ -38,16 +39,11 @@
         <entry key="..\:/UIT/Mobile/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.14635416666666667" />
         <entry key="..\:/UIT/Mobile/app/src/main/res/drawable/ic_search_foreground.xml" value="0.14635416666666667" />
         <entry key="..\:/UIT/Mobile/app/src/main/res/drawable/rounded_editext.xml" value="0.14635416666666667" />
-        <entry key="..\:/UIT/Mobile/app/src/main/res/layout/activity_editprofile.xml" value="0.264" />
         <entry key="..\:/UIT/Mobile/app/src/main/res/layout/activity_p04_main.xml" value="0.13020833333333334" />
         <entry key="..\:/UIT/Mobile/app/src/main/res/layout/activity_p04_main2.xml" value="0.2" />
         <entry key="..\:/UIT/Mobile/app/src/main/res/layout/activity_p06_shopmenu.xml" value="0.13020833333333334" />
         <entry key="..\:/UIT/Mobile/app/src/main/res/layout/activity_p07_fooditem.xml" value="0.11614583333333334" />
         <entry key="..\:/UIT/Mobile/app/src/main/res/layout/activity_p16_favorite.xml" value="0.11614583333333334" />
-        <entry key="..\:/UIT/Mobile/app/src/main/res/layout/favourite_fragment.xml" value="0.2513586956521739" />
-        <entry key="..\:/UIT/Mobile/app/src/main/res/layout/fragment_home.xml" value="0.2513586956521739" />
-        <entry key="..\:/UIT/Mobile/app/src/main/res/layout/fragment_order.xml" value="0.2513586956521739" />
-        <entry key="..\:/UIT/Mobile/app/src/main/res/layout/fragment_settings.xml" value="0.264" />
       </map>
     </option>
   </component>
