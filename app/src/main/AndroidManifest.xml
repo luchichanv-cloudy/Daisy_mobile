@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Daisy_mobile">
         <activity
+            android:name=".editprofile"
+            android:exported="true" />
+        <activity
             android:name=".kitchen_main"
             android:exported="true" />
         <activity
