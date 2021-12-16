@@ -21,6 +21,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -83,10 +85,28 @@ public class p02_signin extends AppCompatActivity {
                                         Toast.makeText(p02_signin.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                     user_id = auth.getCurrentUser().getUid();
-                                    Intent intent = new Intent(p02_signin.this, MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                    user_id = auth.getCurrentUser().getUid();
+                                    //kiem tra xem id tren cua users hay kitchens
+                                    FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+                                    DocumentReference docIdRef = rootRef.collection("users").document(user_id);
+                                    docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                DocumentSnapshot document = task.getResult();
+                                                if (document.exists()) {
+                                                    Intent intent = new Intent(p02_signin.this, MainActivity.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                } else {
+                                                    Intent intent = new Intent(p02_signin.this, kitchen_main.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
+                                            }
+                                        }
+                                    });
+
                                 }
                             }
                         });
