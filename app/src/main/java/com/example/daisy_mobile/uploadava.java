@@ -76,6 +76,7 @@ public class uploadava extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
                             progressDialog.dismiss();
                             Toast.makeText(uploadava.this, "Uploaded", Toast.LENGTH_SHORT).show();
                         }
