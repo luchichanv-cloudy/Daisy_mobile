@@ -1,16 +1,25 @@
 package dataclass;
 
 public class kitchen {
-    private String Name,Address,Email,Phonenumber;
+    private String Name,Address,Email,Phonenumber,ImageID;
     private int vote;
 
     public kitchen(){}
-    public kitchen(String name, String address, String email, String phonenumber) {
+    public kitchen(String name, String address, String email, String phonenumber,String imageID) {
         Name = name;
         Address = address;
         Email = email;
         Phonenumber = phonenumber;
+        ImageID= imageID;
         this.vote=0;
+    }
+
+    public String getImageID() {
+        return ImageID;
+    }
+
+    public void setImageID(String imageID) {
+        ImageID = imageID;
     }
 
     public String getName() {

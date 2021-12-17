@@ -1,17 +1,26 @@
 package dataclass;
 
 public class user {
-    private String Name,Address,Email,Phonenumber;
+    private String Name,Address,Email,Phonenumber,ImageID;
 
 
     public user(){
 
     }
-    public user(String name, String addres, String email, String phonenumber) {
+    public user(String name, String addres, String email, String phonenumber,String imageID) {
         Name = name;
         Address = addres;
         Email = email;
         Phonenumber = phonenumber;
+        ImageID= imageID;
+    }
+
+    public String getImageID() {
+        return ImageID;
+    }
+
+    public void setImageID(String imageID) {
+        ImageID = imageID;
     }
 
     public String getName() {

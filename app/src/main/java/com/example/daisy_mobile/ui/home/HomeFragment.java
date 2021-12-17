@@ -38,6 +38,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -76,35 +77,39 @@ public class HomeFragment extends Fragment {
         //image slider
        db = FirebaseFirestore.getInstance();
 
-        String ID[]=new String[1];
+        String ID[]=new String[3];
+
         //get id of 3 kitchens have top vote
-        db.collection("kitchens").orderBy("vote", Query.Direction.ASCENDING)
-
-       .get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("kitchens")
+                .orderBy("vote", Query.Direction.DESCENDING)
+                .limit(3)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(QuerySnapshot documentSnapshots) {
-                        if (documentSnapshots.isEmpty()) {
-                            Log.d(getTag(), "onSuccess: LIST EMPTY");
-                            return;
-                        } else {
-                            for (DocumentChange documentChange : documentSnapshots.getDocumentChanges())
-                            {
-                                ID[0]=documentChange.getDocument().getId().toString();
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            int i=0;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                              //  Log.d(TAG, document.getId() + " => " + document.getData());
+                                kitchen abc=document.toObject(kitchen.class);
+                                ID[i]=abc.getImageID();
+                                i=i+1;
+
                             }
+                            TopkitchenViewpagerAdapter mViewPagerAdapter = new TopkitchenViewpagerAdapter(getContext(),ID );
+                            mViewPager.setAdapter(mViewPagerAdapter);
+                            mViewPagerAdapter.notifyDataSetChanged();
+                        } else {
+                         //   Log.d(TAG, "Error getting documents: ", task.getException());
                         }
-                        }
-                    });
+                    }
+                });
 
 
 
-        //get images by adapter using id
-       // ID[0]="QEHMQVqaTxVOe4FNVaAcJWZhGeS2";
-        String images[]={"QEHMQVqaTxVOe4FNVaAcJWZhGeS2"};
 
-        TopkitchenViewpagerAdapter mViewPagerAdapter = new TopkitchenViewpagerAdapter(getContext(),images );
-        mViewPager.setAdapter(mViewPagerAdapter);
-        mViewPagerAdapter.notifyDataSetChanged();
+
+
 
 
 

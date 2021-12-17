@@ -98,17 +98,19 @@ public class p03_signup extends AppCompatActivity {
 
                                         if(userbutton.isChecked())
                                         {
-                                            user User = new user(name,address,email,phonenumber);
+
                                             //lay id cua user authentication
                                             String Id=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                            user User = new user(name,address,email,phonenumber,Id);
                                             user_id=Id;
                                             //luu data vao firestore database voi custom id
                                             db.collection("users").document(Id).set(User);
                                         }
                                         else{
-                                            kitchen User = new kitchen(name,address,email,phonenumber);
+
                                             //lay id cua user authentication
                                             String Id=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                            kitchen User = new kitchen(name,address,email,phonenumber,Id);
                                             user_id=Id;
                                             //luu data vao firestore database voi custom id
                                             db.collection("kitchens").document(Id).set(User);
