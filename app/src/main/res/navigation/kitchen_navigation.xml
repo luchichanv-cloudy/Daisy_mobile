@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/kitchen_navigation"
+    app:startDestination="@id/navigation_kitchenmenu">
+
+    <fragment
+        android:id="@+id/navigation_kitchenmenu"
+        android:name="com.example.daisy_mobile.ui.menu.Kitchenmenu"
+        android:label="fragment_kitchenmenu"
+        tools:layout="@layout/fragment_kitchenmenu" />
+    <fragment
+        android:id="@+id/navigation_kitchenorder"
+        android:name="com.example.daisy_mobile.ui.kitchenorder.Kitchenorder"
+        android:label="fragment_kitchenorder"
+        tools:layout="@layout/fragment_kitchenorder" />
+    <fragment
+        android:id="@+id/navigation_kitchensales"
+        android:name="com.example.daisy_mobile.ui.sales.Kitchensales"
+        android:label="fragment_kitchensales"
+        tools:layout="@layout/fragment_kitchensales" />
+    <fragment
+        android:id="@+id/navigation_kitchensetting"
+        android:name="com.example.daisy_mobile.ui.kitchensetting.Kitchensetting"
+        android:label="fragment_kitchensetting"
+        tools:layout="@layout/fragment_kitchensetting" />
+</navigation>

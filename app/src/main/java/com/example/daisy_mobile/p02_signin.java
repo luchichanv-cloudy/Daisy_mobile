@@ -99,7 +99,7 @@ public class p02_signin extends AppCompatActivity {
                                                     startActivity(intent);
                                                     finish();
                                                 } else {
-                                                    Intent intent = new Intent(p02_signin.this, kitchen_main.class);
+                                                    Intent intent = new Intent(p02_signin.this, MainActivity2.class);
                                                     startActivity(intent);
                                                     finish();
                                                 }

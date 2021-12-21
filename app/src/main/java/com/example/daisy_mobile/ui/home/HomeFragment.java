@@ -104,15 +104,6 @@ public class HomeFragment extends Fragment {
                         }
                     }
                 });
-
-
-
-
-
-
-
-
-
         // nut search
         ImageButton btn = (ImageButton) root.findViewById(R.id.hf_ib_search);
         btn.setOnClickListener(new View.OnClickListener() {

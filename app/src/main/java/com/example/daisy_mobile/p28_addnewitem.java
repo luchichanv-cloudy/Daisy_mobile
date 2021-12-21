@@ -176,7 +176,7 @@ public class p28_addnewitem extends AppCompatActivity {
                     item Item = new item(name,imageid,description,category, user_id, price,pricesale,false);
                     db.collection("item").document(imageid).set(Item);
                     uploadImage();
-                    startActivity(new Intent(p28_addnewitem.this, kitchen_main.class));
+                    startActivity(new Intent(p28_addnewitem.this, MainActivity2.class));
                     //finish();
 
                 }

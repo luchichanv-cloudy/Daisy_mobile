@@ -7,8 +7,11 @@
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/drawable/inactivedot.xml" value="0.10520833333333333" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/drawable/stroke.xml" value="0.18125" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activedot.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_kitchen.xml" value="0.15" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_kitchen_main.xml" value="0.1" />
-        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_kitchenmain.xml" value="0.1203125" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_main2.xml" value="0.1" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_p02_signin.xml" value="0.20416666666666666" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_p03_signup.xml" value="0.21" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/activity_p04_main.xml" value="0.1" />
@@ -23,14 +26,18 @@
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/fooditem.xml" value="0.5421853388658368" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/fragment_kitchenmenu.xml" value="0.22" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/fragment_kitchenorder.xml" value="0.134375" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/fragment_kitchensales.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/fragment_kitchensetting.xml" value="0.1" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/fragment_order.xml" value="0.1" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/inactivedot.xml" value="0.1" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/listviewfavourite.xml" value="0.1" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/menuitem.xml" value="0.16510416666666666" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/p02_signin.xml" value="0.11730072463768115" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/p28_addnewitem.xml" value="0.29058561897702" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/layout/topfavoritekitchen.xml" value="0.20416666666666666" />
-        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
+        <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
         <entry key="..\:/2_PTUDDD_NT118/New folder/Daisy_mobile/app/src/main/res/menu/kitchen_nav_menu.xml" value="0.1" />
         <entry key="..\:/2_PTUDDD_NT118/doan/javaver/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/2_PTUDDD_NT118/doan/javaver/app/src/main/res/layout/fragment_dashboard.xml" value="0.12771739130434784" />
