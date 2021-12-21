@@ -33,6 +33,7 @@ public class uploadava extends AppCompatActivity {
 
     private Uri filePath;
 
+
     private final int PICK_IMAGE_REQUEST = 71;
     private void chooseImage() {
         Intent intent = new Intent();

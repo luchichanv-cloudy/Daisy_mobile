@@ -1,65 +1,87 @@
 package com.example.daisy_mobile.ui.menu;
 
+import static com.example.daisy_mobile.p02_signin.user_id;
+
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
+
 import com.example.daisy_mobile.R;
+import com.example.daisy_mobile.adapter.FoodItemAdapter;
+import com.example.daisy_mobile.adapter.TopkitchenViewpagerAdapter;
+import com.example.daisy_mobile.databinding.FragmentHomeBinding;
+import com.example.daisy_mobile.databinding.FragmentKitchenmenuBinding;
+import com.example.daisy_mobile.ui.home.HomeViewModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Kitchenmenu#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
+import java.util.ArrayList;
+
+import dataclass.item;
+import dataclass.kitchen;
+
+
 public class Kitchenmenu extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Kitchenmenu.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Kitchenmenu newInstance(String param1, String param2) {
-        Kitchenmenu fragment = new Kitchenmenu();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    public Kitchenmenu() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    private FragmentKitchenmenuBinding binding;
+    private ListView lv;
+    private FirebaseFirestore db;
+    private Button btnnext;
+    private ArrayList<item> arrayOfitem;
+    private KitchenmenuViewModel kitchenmenuviewmodel;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_kitchenmenu, container, false);
+        kitchenmenuviewmodel =
+                new ViewModelProvider(this).get(KitchenmenuViewModel.class);
+        binding = FragmentKitchenmenuBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+        arrayOfitem = new ArrayList<item>();
+
+        FoodItemAdapter adapter = new FoodItemAdapter(getContext(), arrayOfitem);
+        lv =(ListView) root.findViewById(R.id.kitchenmenu_lv);
+        lv.setAdapter(adapter);
+
+        db = FirebaseFirestore.getInstance();
+        db.collection("item")
+                .whereEqualTo("kitchenid",user_id)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            int i=0;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                //  Log.d(TAG, document.getId() + " => " + document.getData());
+                                item abc=document.toObject(item.class);
+                                arrayOfitem.add(abc);
+
+                            }
+                        } else {
+                            //   Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+        adapter.notifyDataSetChanged();
+        return root;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }
