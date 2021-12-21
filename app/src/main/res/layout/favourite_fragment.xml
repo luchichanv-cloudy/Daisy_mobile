@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.favorite.FavouriteFragment">
 
     <LinearLayout
@@ -12,6 +13,7 @@
         android:layout_height="100dp"
         android:background="@color/orangeyellow"
         android:gravity="center"
+        android:id="@+id/line1"
         android:orientation="horizontal"
         android:text="Favourite"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,5 +28,13 @@
             android:text="Favorite"
             android:textColor="@color/white" />
     </LinearLayout>
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below = "@id/line1">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>
 
