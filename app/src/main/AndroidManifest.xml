@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Daisy_mobile">
         <activity
+            android:name=".p28_addnewitem"
+            android:exported="true" />
+        <activity
             android:name=".editprofile"
             android:exported="true" />
         <activity
