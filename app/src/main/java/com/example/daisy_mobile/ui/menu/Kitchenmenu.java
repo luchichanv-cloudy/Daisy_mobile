@@ -48,36 +48,41 @@ public class Kitchenmenu extends Fragment {
 
 
 
-        arrayOfitem = new ArrayList<item>();
 
-        FoodItemAdapter adapter = new FoodItemAdapter(getContext(), arrayOfitem);
         lv =(ListView) view.findViewById(R.id.kitchenmenu_lv);
-        lv.setAdapter(adapter);
-        if(user_id!=null)
-        {
             db = FirebaseFirestore.getInstance();
             db.collection("item")
-                    .whereEqualTo("kitchenid",user_id)
+                    .whereEqualTo("kitchenID",user_id)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        //    item ia=new item("denden","ae422c35-f366-40a7-bbee-67a82979d7b2","hello","drink","3vWBk5eX7lcjexVK0zVXLYPtFFq1",50,30,false);
+                            arrayOfitem = new ArrayList<item>();
+                            FoodItemAdapter adapter = new FoodItemAdapter(getContext(), arrayOfitem);
+                            lv.setAdapter(adapter);
+                         //   arrayOfitem.add(ia);
                             if (task.isSuccessful()) {
                                 int i=0;
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                    //  Log.d(TAG, document.getId() + " => " + document.getData());
-                                    item abc=document.toObject(item.class);
-                                    arrayOfitem.add(abc);
 
+                                    item abc=document.toObject(item.class);
+                                    arrayOfitem.add(abc);adapter.notifyDataSetChanged();
                                 }
+
+
+
+
                             } else {
+
+
                                 //   Log.d(TAG, "Error getting documents: ", task.getException());
                             }
                         }
                     });
 
-            adapter.notifyDataSetChanged();
-        }
+
+
         return view;
 
     }

@@ -15,7 +15,7 @@ public class item {
         this.pricesale = pricesale;
         this.salestatus = salestatus;
     }
-
+    public item(){};
     public String getName() {
         return name;
     }

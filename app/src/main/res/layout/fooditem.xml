@@ -7,8 +7,9 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:orientation="horizontal"
-    android:background="@color/orangeyellow">
+    android:background="@color/white">
     <ImageView
+        android:id="@+id/img"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:src="@drawable/p02"
@@ -22,7 +23,7 @@
             android:id="@+id/fooditem_TV_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/orangeyellow"
             android:text="abc"
             android:textSize="35dp"/>
         <TextView
