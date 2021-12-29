@@ -55,7 +55,7 @@ import dataclass.Image;
 import dataclass.kitchen;
 
 public class HomeFragment extends Fragment {
-
+    public static String kitchen_display_id;
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
     private FirebaseFirestore db;
@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment {
         //image slider
        db = FirebaseFirestore.getInstance();
 
-        String ID[]=new String[3];
+        kitchen ID[]=new kitchen[3];
 
         //get id of 3 kitchens have top vote
         db.collection("kitchens")
@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                               //  Log.d(TAG, document.getId() + " => " + document.getData());
                                 kitchen abc=document.toObject(kitchen.class);
-                                ID[i]=abc.getImageID();
+                                ID[i]=abc;
                                 i=i+1;
 
                             }

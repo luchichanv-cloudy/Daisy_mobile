@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,14 +22,16 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.Objects;
 
+import dataclass.kitchen;
+
 public class TopkitchenViewpagerAdapter extends PagerAdapter {
 
     Context context;
-    String images[];
+    kitchen images[];
     LayoutInflater layoutInflater;
 
 
-    public TopkitchenViewpagerAdapter(Context context, String images[]) {
+    public TopkitchenViewpagerAdapter(Context context, kitchen images[]) {
         this.context = context;
         this.images = images;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -48,9 +51,14 @@ public class TopkitchenViewpagerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, final int position) {
         View itemView = layoutInflater.inflate(R.layout.topfavoritekitchen, container, false);
 
+        TextView name=(TextView) itemView.findViewById(R.id.textname);
+
         ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
       //  imageView.setImageResource(images[position]);
-        String ID=images[position];
+
+        String ID=images[position].getImageID();
+        String Name=images[position].getName();
+        name.setText(Name);
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         storageRef.child("images/"+ID).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override

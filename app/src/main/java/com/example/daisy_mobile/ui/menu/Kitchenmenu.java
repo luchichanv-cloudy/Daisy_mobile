@@ -2,6 +2,7 @@ package com.example.daisy_mobile.ui.menu;
 
 import static com.example.daisy_mobile.p02_signin.user_id;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,9 @@ import com.example.daisy_mobile.adapter.FoodItemAdapter;
 import com.example.daisy_mobile.adapter.TopkitchenViewpagerAdapter;
 import com.example.daisy_mobile.databinding.FragmentHomeBinding;
 import com.example.daisy_mobile.databinding.FragmentKitchenmenuBinding;
+import com.example.daisy_mobile.p02_signin;
+import com.example.daisy_mobile.p03_signup;
+import com.example.daisy_mobile.p28_addnewitem;
 import com.example.daisy_mobile.ui.home.HomeViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -70,9 +74,6 @@ public class Kitchenmenu extends Fragment {
                                     arrayOfitem.add(abc);adapter.notifyDataSetChanged();
                                 }
 
-
-
-
                             } else {
 
 
@@ -81,8 +82,13 @@ public class Kitchenmenu extends Fragment {
                         }
                     });
 
-
-
+            btnnext=(Button) view.findViewById(R.id.kitchenmenu_btn);
+            btnnext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getContext(), p28_addnewitem.class));
+                }
+            });
         return view;
 
     }
