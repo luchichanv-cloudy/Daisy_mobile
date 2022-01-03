@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,11 +23,14 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.example.daisy_mobile.P06_fragment_shopmenu;
 import com.example.daisy_mobile.R;
+import com.example.daisy_mobile.adapter.ClickableViewPager;
 import com.example.daisy_mobile.adapter.TopkitchenViewpagerAdapter;
 import com.example.daisy_mobile.databinding.FragmentHomeBinding;
 import com.example.daisy_mobile.p03_signup;
 import com.example.daisy_mobile.p05_searchresult;
+import com.example.daisy_mobile.p06_shopmenu;
 import com.example.daisy_mobile.uploadava;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -62,8 +66,10 @@ public class HomeFragment extends Fragment {
     private ImageView imageView;
     private ViewPager mViewPager;
     private DatabaseReference mDatabaseRef;
+    private ImageButton btnsearch;
+    public static  String searchtext;
     //private int[] images;
-
+    int vpposition;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -73,7 +79,32 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         final TextView textView = binding.hfTvReccomend;
         mViewPager= (ViewPager)root.findViewById(R.id.hf_vp_topfavorite);
+      //  ClickableViewPager mViewPager = (ClickableViewPager) root.findViewById(R.id.hf_vp_topfavorite);
 
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int Position) {
+               vpposition=Position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        mViewPager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getContext(),p06_shopmenu.class);
+                startActivity(i);
+            }
+        });
         //image slider
        db = FirebaseFirestore.getInstance();
 
@@ -105,16 +136,18 @@ public class HomeFragment extends Fragment {
                     }
                 });
         // nut search
-        ImageButton btn = (ImageButton) root.findViewById(R.id.hf_ib_search);
-        btn.setOnClickListener(new View.OnClickListener() {
+        EditText etsearch = (EditText)root.findViewById(R.id.hf_et_search);
+        ImageButton btnsearch = (ImageButton) root.findViewById(R.id.hf_ib_search);
+        btnsearch.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-
+                searchtext=etsearch.getText().toString();
                 startActivity(new Intent(getContext(), p05_searchresult.class));
 
             }
         });
+
 
         // Initializing the ViewPagerAdapter
 

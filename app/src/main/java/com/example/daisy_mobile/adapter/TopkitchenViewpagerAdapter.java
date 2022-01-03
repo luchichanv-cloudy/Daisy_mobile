@@ -1,6 +1,7 @@
 package com.example.daisy_mobile.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
+import com.example.daisy_mobile.P06_fragment_shopmenu;
 import com.example.daisy_mobile.R;
+import com.example.daisy_mobile.p06_shopmenu;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -83,14 +87,20 @@ public class TopkitchenViewpagerAdapter extends PagerAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "you clicked image " + (position + 1), Toast.LENGTH_LONG).show();
+
             }
         });
 
         return itemView;
     }
 
+
+
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((LinearLayout) object);
     }
+
+
+
 }

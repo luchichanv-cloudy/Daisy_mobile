@@ -79,4 +79,9 @@ public class item {
     public void setSalestatus(boolean salestatus) {
         this.salestatus = salestatus;
     }
+
+    @Override
+    public String toString() {
+        return this.name ;
+    }
 }

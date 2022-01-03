@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center|bottom"
+android:onClick="dosomething"
+    android:duplicateParentState="true"
     >
     <ImageView
         android:id="@+id/imageView"
