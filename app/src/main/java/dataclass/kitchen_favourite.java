@@ -16,7 +16,6 @@ public class kitchen_favourite {
     }
 
 
-
     public String getKitchenid() {
         return kitchenid;
     }

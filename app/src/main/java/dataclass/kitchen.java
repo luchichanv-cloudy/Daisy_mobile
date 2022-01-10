@@ -1,25 +1,36 @@
 package dataclass;
 
 public class kitchen {
-    private String Name,Address,Email,Phonenumber,ImageID;
+    private String kitchenId, Name, Address, Email, Phonenumber, ImageID;
     private int vote;
 
-    public kitchen(){}
-    public kitchen(String name, String address, String email, String phonenumber,String imageID) {
+    public kitchen() {
+    }
+
+//    public kitchen(String kitchenId, String name, String address, String email, String phonenumber, String imageID, int vote) {
+//        this.kitchenId = kitchenId;
+//        Name = name;
+//        Address = address;
+//        Email = email;
+//        Phonenumber = phonenumber;
+//        ImageID = imageID;
+//        this.vote = vote;
+//    }
+
+    public kitchen(String kitchenId, String name, String address, String email, String phonenumber) {
+        this.kitchenId = kitchenId;
         Name = name;
         Address = address;
         Email = email;
         Phonenumber = phonenumber;
-        ImageID= imageID;
-        this.vote=0;
     }
 
-    public String getImageID() {
-        return ImageID;
+    public String getKitchenId() {
+        return kitchenId;
     }
 
-    public void setImageID(String imageID) {
-        ImageID = imageID;
+    public void setKitchenId(String kitchenId) {
+        this.kitchenId = kitchenId;
     }
 
     public String getName() {
@@ -52,6 +63,14 @@ public class kitchen {
 
     public void setPhonenumber(String phonenumber) {
         Phonenumber = phonenumber;
+    }
+
+    public String getImageID() {
+        return ImageID;
+    }
+
+    public void setImageID(String imageID) {
+        ImageID = imageID;
     }
 
     public int getVote() {
