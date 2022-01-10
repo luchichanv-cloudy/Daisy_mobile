@@ -26,6 +26,9 @@
             android:name=".uploadava"
             android:exported="true" />
         <activity
+            android:name=".p16_favorite"
+            android:exported="true" />
+        <activity
             android:name=".p07_fooditem"
             android:exported="true" />
         <activity

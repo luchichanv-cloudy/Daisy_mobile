@@ -1,38 +1,37 @@
 package com.example.daisy_mobile;
 
-import static com.example.daisy_mobile.p02_signin.user_id;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
+
 
 import android.content.Intent;
-import android.database.DataSetObserver;
+
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
+
+import android.widget.AdapterView;
+
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
+
 import android.widget.ListView;
 
 import com.example.daisy_mobile.adapter.FoodItemAdapter;
-import com.example.daisy_mobile.adapter.TopkitchenViewpagerAdapter;
+
 import com.example.daisy_mobile.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Locale;
 
-import dataclass.Image;
 import dataclass.item;
 
 public class p05_searchresult extends AppCompatActivity {
@@ -92,6 +91,14 @@ public class p05_searchresult extends AppCompatActivity {
               //  Intent i=new Intent(p05_searchresult.this,p05_searchresult.class);
                 HomeFragment.searchtext=et_search.getText().toString();
                 startActivity(new Intent(p05_searchresult.this, p05_searchresult.class));
+            }
+        });
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                display_id=items.get(i).getKitchenID();
+                startActivity(new Intent(p05_searchresult.this,p06_shopmenu.class));
             }
         });
     }

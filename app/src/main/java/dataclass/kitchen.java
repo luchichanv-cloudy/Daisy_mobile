@@ -7,15 +7,15 @@ public class kitchen {
     public kitchen() {
     }
 
-//    public kitchen(String kitchenId, String name, String address, String email, String phonenumber, String imageID, int vote) {
-//        this.kitchenId = kitchenId;
-//        Name = name;
-//        Address = address;
-//        Email = email;
-//        Phonenumber = phonenumber;
-//        ImageID = imageID;
-//        this.vote = vote;
-//    }
+    public kitchen(String kitchenId, String name, String address, String email, String phonenumber, String imageID, int vote) {
+        this.kitchenId = kitchenId;
+        Name = name;
+        Address = address;
+        Email = email;
+        Phonenumber = phonenumber;
+        ImageID = imageID;
+        this.vote = vote;
+    }
 
     public kitchen(String kitchenId, String name, String address, String email, String phonenumber) {
         this.kitchenId = kitchenId;
