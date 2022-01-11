@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -21,6 +22,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -31,9 +34,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import dataclass.item;
 import dataclass.kitchen;
+import dataclass.kitchen_favourite;
 
 public class p06_shopmenu extends AppCompatActivity {
     public static String display_kitchenid;
@@ -43,17 +48,18 @@ public class p06_shopmenu extends AppCompatActivity {
     private ImageView iv_kitchenimage;
     private ArrayList<item> arrayOfitem;
     private FirebaseFirestore db;
+    private boolean favoritestatus;
     private void init()
     {
      //   display_kitchenid="3vWBk5eX7lcjexVK0zVXLYPtFFq1";
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user_id=user.getUid();
         iv_kitchenimage=(ImageView)findViewById(R.id.p06_iv_kitchenimage);
         tv_kitchenname1=(TextView)findViewById(R.id.p06_tv_kitchenname);
         tv_kitchenname2=(TextView)findViewById(R.id.p06_tv_kitchenname2);
         lv_fooditem=(ListView)findViewById(R.id.p06_lv_food);
         ib_back=(ImageButton) findViewById(R.id.p06_ib_back);
         ib_favorite=(ImageButton) findViewById(R.id.p06_ib_favorite);
-
-
     }
     private void getimage(String url, ImageView displayview)
     {
@@ -70,15 +76,13 @@ public class p06_shopmenu extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-
-
             }
         });
     }
     private void checkfavorite(String kitchen_id)
     {
         db.collection("favourite_kitchen")
-                .whereEqualTo("kitchen_id",kitchen_id)
+                .whereEqualTo("kitchenid",kitchen_id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -115,7 +119,6 @@ public class p06_shopmenu extends AppCompatActivity {
                        getimage(document.get("imageID").toString(),iv_kitchenimage);
                        checkfavorite(display_kitchenid);
                    } else {
-
                    }
                } else {
 
@@ -155,7 +158,22 @@ public class p06_shopmenu extends AppCompatActivity {
         setContentView(R.layout.activity_p06_shopmenu);
         init();
         initfirebase();
+        favoritestatus=false;
+        ib_favorite.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View view) {
+                                               if (favoritestatus==false)
+                                               {
+                                                   String Id= UUID.randomUUID().toString();
+                                                   kitchen_favourite abc= new kitchen_favourite(display_kitchenid,user_id);
+                                                   db.collection("favourite_kitchen").document(Id).set(abc);
 
+                                                   ib_favorite.setImageResource(R.drawable.ic_baseline_favorite_24);
+                                                   favoritestatus=true;
+                                               }
 
+                                           }
+                                       }
+        );
     }
 }
