@@ -98,6 +98,7 @@ public class p05_searchresult extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 display_id=items.get(i).getKitchenID();
+                p06_shopmenu.display_kitchenid=display_id;
                 startActivity(new Intent(p05_searchresult.this,p06_shopmenu.class));
             }
         });

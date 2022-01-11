@@ -62,9 +62,12 @@
         <entry key="..\:/UIT/Mobile/app/src/main/res/layout/activity_p16_favorite.xml" value="0.11614583333333334" />
         <entry key="..\:/daisymobile/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1" />
         <entry key="..\:/daisymobile/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1" />
+        <entry key="..\:/daisymobile/app/src/main/res/drawable/shopmenu_item.xml" value="0.1" />
         <entry key="..\:/daisymobile/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/daisymobile/app/src/main/res/layout/activity_p05_searchresult.xml" value="0.1" />
         <entry key="..\:/daisymobile/app/src/main/res/layout/activity_p06_shopmenu.xml" value="0.2" />
         <entry key="..\:/daisymobile/app/src/main/res/layout/favourite_fragment.xml" value="0.22" />
+        <entry key="..\:/daisymobile/app/src/main/res/layout/shopmenu_item.xml" value="0.25" />
         <entry key="..\:/daisymobile/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
       </map>
     </option>
