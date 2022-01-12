@@ -31,6 +31,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/tv_timecreated"
                 android:layout_marginTop="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
@@ -39,6 +40,7 @@
                 android:text="Timecreated"
                 android:layout_marginRight="15dp"/>
             <TextView
+                android:id="@+id/tv_othername"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:gravity="right"
@@ -58,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp">
             <ListView
+                android:id="@+id/lv_item"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
             android:scrollX="0px"
@@ -80,6 +83,7 @@
         android:textSize="20dp"
         android:gravity="center_vertical"/>
     <Button
+        android:id="@+id/btn_dosomething"
         app:layout_constraintStart_toEndOf="@+id/tv_status"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -74,6 +74,8 @@ public class p06_shopmenu extends AppCompatActivity {
         lv_fooditem=(ListView)findViewById(R.id.p06_lv_food);
      //   ib_back=(ImageButton) findViewById(R.id.p06_ib_back);
         ib_favorite=(ImageButton) findViewById(R.id.p06_ib_favorite);
+        ib_favorite.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+
     }
     private void getimage(String url, ImageView displayview)
     {
@@ -97,6 +99,7 @@ public class p06_shopmenu extends AppCompatActivity {
     {
         db.collection("favourite_kitchen")
                 .whereEqualTo("kitchenid",kitchen_id)
+                .whereEqualTo("userid",user_id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -107,10 +110,12 @@ public class p06_shopmenu extends AppCompatActivity {
                             if (document.isEmpty())
                             {
                                 ib_favorite.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                                favoritestatus=false;
                             }
                             else
                             {
                                 ib_favorite.setImageResource(R.drawable.ic_baseline_favorite_24);
+                                favoritestatus=true;
                             }
                         }
                     }
@@ -238,11 +243,11 @@ public class p06_shopmenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_p06_shopmenu);
-
+        favoritestatus=false;
         init();
         initfirebase();
 
-        favoritestatus=false;
+
         ib_favorite.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View view) {
