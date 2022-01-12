@@ -23,18 +23,19 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import dataclass.item;
 
 public class ShopItemAdapter extends ArrayAdapter<item> {
     private Context context;
     private ArrayList<item> items;
-
-    public ShopItemAdapter(Context context, ArrayList<item> items) {
+    private ArrayList<Integer> quantity;
+    public ShopItemAdapter(Context context, ArrayList<item> items, ArrayList<Integer> quantity) {
         super(context, 0,items);
         this.context=context;
         this.items=items;
-
+        this.quantity=quantity;
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -53,6 +54,7 @@ public class ShopItemAdapter extends ArrayAdapter<item> {
         //
         //set value
         tv_name.setText(item.getName());
+        tv_number.setText(Integer.toString(quantity.get(position)));
         tv_description.setText(item.getDescription());
         if(item.isSalestatus())
         {
@@ -87,9 +89,12 @@ public class ShopItemAdapter extends ArrayAdapter<item> {
         ib_minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Integer number= Integer.parseInt(tv_number.getText().toString());
                 if(number>0) {number--;}
                 tv_number.setText(Integer.toString(number));
+                quantity.set(position,number);
+
             }
         });
 
@@ -99,9 +104,23 @@ public class ShopItemAdapter extends ArrayAdapter<item> {
                 Integer number= Integer.parseInt(tv_number.getText().toString());
                 number++;
                 tv_number.setText(Integer.toString(number));
+                quantity.set(position,number);
             }
         });
         return convertView;
     }
 
+    @NonNull
+    @Override
+    public Context getContext() {
+        return context;
+    }
+
+    public ArrayList<item> getItems() {
+        return items;
+    }
+
+    public ArrayList<Integer> getQuantity() {
+        return quantity;
+    }
 }

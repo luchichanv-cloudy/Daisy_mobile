@@ -69,6 +69,15 @@
         <entry key="..\:/daisymobile/app/src/main/res/layout/favourite_fragment.xml" value="0.22" />
         <entry key="..\:/daisymobile/app/src/main/res/layout/shopmenu_item.xml" value="0.25" />
         <entry key="..\:/daisymobile/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/doancuoiki/app/src/main/res/layout/activity_p05_searchresult.xml" value="0.1" />
+        <entry key="..\:/doancuoiki/app/src/main/res/layout/activity_p06_shopmenu.xml" value="0.2578616352201258" />
+        <entry key="..\:/doancuoiki/app/src/main/res/layout/fooditem.xml" value="0.33" />
+        <entry key="..\:/doancuoiki/app/src/main/res/layout/fragment_home.xml" value="0.18" />
+        <entry key="..\:/doancuoiki/app/src/main/res/layout/fragment_p06_shopmenu.xml" value="0.1" />
+        <entry key="..\:/doancuoiki/app/src/main/res/layout/fragment_settings.xml" value="0.34981458590852904" />
+        <entry key="..\:/doancuoiki/app/src/main/res/layout/orderitem.xml" value="0.25" />
+        <entry key="..\:/doancuoiki/app/src/main/res/layout/shopmenu_item.xml" value="0.2" />
+        <entry key="..\:/doancuoiki/app/src/main/res/layout/topfavoritekitchen.xml" value="0.1" />
       </map>
     </option>
   </component>

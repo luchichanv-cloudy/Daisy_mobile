@@ -28,6 +28,7 @@ import com.example.daisy_mobile.databinding.FragmentSettingsBinding;
 import com.example.daisy_mobile.databinding.FragmentSettingsBinding;
 //import com.example.daisy_mobile.models.User;
 import com.example.daisy_mobile.p02_signin;
+import com.example.daisy_mobile.p06_shopmenu;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
@@ -59,7 +60,7 @@ public class SettingFragment extends Fragment {
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         btnEdit = root.findViewById(R.id.btnEdit);
-
+        img_Avatar=root.findViewById(R.id.img_Avatar);
         initialView(root);
         initialData(root);
         initialEvent();
@@ -83,31 +84,25 @@ public class SettingFragment extends Fragment {
                             Objects.requireNonNull(task1.getResult().get("email")).toString(),
                             Objects.requireNonNull(task1.getResult().get("address")).toString(),
                             Objects.requireNonNull(task1.getResult().get("imageID")).toString());
-
-
                     tvName.setText(user.getName());
                     tvPhoneNumber.setText(user.getPhonenumber());
                     tvAddress.setText(user.getAddress());
                     tvEmail.setText(user.getEmail());
-//                    String userimageid=user.getImageID();
-//                    StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-//                    storageRef.child("images/"+userimageid).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                        @Override
-//                        public void onSuccess(Uri uri) {
-//                            // Got the download URL for 'users/me/profile.png'
-//                            Glide.with(context /* context */)
-//                                    .load(uri)
-//                                    .into(img_Avatar);
-//
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception exception) {
-//                            // Handle any errors
-//                            Toast.makeText(context,"Failed ",Toast.LENGTH_LONG);
-//                        }
-//                    });
-
+//                   // load hinh anh
+                    StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+                    storageRef.child("images/"+user.getImageID()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            // Got the download URL for 'users/me/profile.png'
+                            Glide.with(getContext() /* context */)
+                                    .load(uri)
+                                    .into(img_Avatar);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                        }
+                    });
 
                 }
             }
