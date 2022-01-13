@@ -113,6 +113,12 @@ public class SettingFragment extends Fragment {
     private void initialEvent() {
         btnEdit.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), editprofile.class);
+            intent.putExtra("NAME", user.getName());
+            intent.putExtra("PHONE_NUMBER", user.getPhonenumber());
+            intent.putExtra("EMAIL", user.getEmail());
+            intent.putExtra("ADDRESS", user.getAddress());
+            intent.putExtra("IMAGE_ID", user.getImageID());
+            intent.putExtra("USER_ID", user.getId());
             startActivity(intent);
         });
     }

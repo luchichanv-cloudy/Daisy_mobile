@@ -22,6 +22,13 @@ public class user {
         this.Address = address;
         this.ImageID = imageID;
     }
+    public String getId() {
+        return ID;
+    }
+
+    public void setId(String id) {
+        this.ID = id;
+    }
 
     public String getImageID() {
         return ImageID;

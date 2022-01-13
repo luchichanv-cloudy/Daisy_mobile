@@ -28,11 +28,11 @@
 
         <ImageView
             android:id="@+id/img_Avatar"
-            android:scaleType="centerCrop"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
+            android:scaleType="centerCrop"
             tools:src="@drawable/avatar" />
     </RelativeLayout>
 
