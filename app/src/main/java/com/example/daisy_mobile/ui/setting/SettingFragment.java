@@ -78,7 +78,7 @@ public class SettingFragment extends Fragment {
                 DocumentSnapshot document = task1.getResult();
                 if (document.exists()) {
                     user = new user(
-                            task1.getResult().getId(),
+
                             Objects.requireNonNull(task1.getResult().get("name")).toString(),
                             Objects.requireNonNull(task1.getResult().get("phonenumber")).toString(),
                             Objects.requireNonNull(task1.getResult().get("email")).toString(),
@@ -118,7 +118,7 @@ public class SettingFragment extends Fragment {
             intent.putExtra("EMAIL", user.getEmail());
             intent.putExtra("ADDRESS", user.getAddress());
             intent.putExtra("IMAGE_ID", user.getImageID());
-            intent.putExtra("USER_ID", user.getId());
+
             startActivity(intent);
         });
     }

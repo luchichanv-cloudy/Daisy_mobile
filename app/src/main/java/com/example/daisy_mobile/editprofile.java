@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.daisy_mobile.ui.setting.SettingFragment;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -37,6 +38,7 @@ public class editprofile extends AppCompatActivity {
     private void initialEvent() {
         btnSave.setOnClickListener(view -> {
             String name = edname.getText().toString().trim();
+            String user_id= FirebaseAuth.getInstance().getUid();
             String phoneNumber = edphonenumber.getText().toString().trim();
             String address = edaddress.getText().toString().trim();
             if (!name.isEmpty() && !phoneNumber.isEmpty() && !address.isEmpty()) {
@@ -46,7 +48,7 @@ public class editprofile extends AppCompatActivity {
                 //inputuser.put("email", edemail.getText());
                 inputuser.put("address", address);
                 db.collection("users")
-                        .document(user.getId())
+                        .document(user_id)
                         .update(inputuser).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Toast.makeText(this, "Update profile is successful!", Toast.LENGTH_SHORT).show();
@@ -65,9 +67,9 @@ public class editprofile extends AppCompatActivity {
         String email = intent.getStringExtra("EMAIL");
         String address = intent.getStringExtra("ADDRESS");
         String imageid = intent.getStringExtra("IMAGE_ID");
-        String userid = intent.getStringExtra("USER_ID");
+       // String userid = intent.getStringExtra("USER_ID");
 
-        user = new user(userid, name, phonenumber, email, address, imageid);
+        user = new user( name, phonenumber, email, address, imageid);
     }
 
     private void initialView() {
