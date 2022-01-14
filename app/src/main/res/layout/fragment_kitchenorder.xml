@@ -27,7 +27,7 @@
    <ListView
        android:id="@+id/lv_neworder"
        android:layout_width="match_parent"
-       android:layout_height="300dp"
+       android:layout_height="match_parent"
        android:scrollX="0dp"
        android:scrollY="0dp"
        android:scrollbarAlwaysDrawVerticalTrack="true"
@@ -36,7 +36,7 @@
    <ListView
        android:id="@+id/lv_pastorder"
        android:layout_width="match_parent"
-       android:layout_height="300dp"
+       android:layout_height="match_parent"
        android:scrollX="0dp"
        android:scrollY="0dp"
        android:scrollbarAlwaysDrawVerticalTrack="true"

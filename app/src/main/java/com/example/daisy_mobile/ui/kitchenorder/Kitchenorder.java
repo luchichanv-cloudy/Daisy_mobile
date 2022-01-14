@@ -59,14 +59,17 @@ public class Kitchenorder extends Fragment {
                 switch(selectedTabPosition)
                 {
                     case 0: {
+                        initdata(0);
                         lv1.setVisibility(View.VISIBLE);lv2.setVisibility(View.GONE);lv3.setVisibility(View.GONE);
                         break;
                     }
                     case 1: {
+                        initdata(1);
                         lv2.setVisibility(View.VISIBLE);lv1.setVisibility(View.GONE);lv3.setVisibility(View.GONE);
                         break;
                     }
                     case 2: {
+                        initdata(2);
                         lv3.setVisibility(View.VISIBLE);lv2.setVisibility(View.GONE);lv1.setVisibility(View.GONE);
                         break;
                     }
@@ -80,7 +83,26 @@ public class Kitchenorder extends Fragment {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                TabLayout   tabLayout = (TabLayout) view.findViewById(R.id.tablayout); // get the reference of TabLayout
+                int selectedTabPosition = tabLayout.getSelectedTabPosition(); // get the position for the current selected tab
+                switch(selectedTabPosition)
+                {
+                    case 0: {
+                        initdata(0);
+                        lv1.setVisibility(View.VISIBLE);lv2.setVisibility(View.GONE);lv3.setVisibility(View.GONE);
+                        break;
+                    }
+                    case 1: {
+                        initdata(1);
+                        lv2.setVisibility(View.VISIBLE);lv1.setVisibility(View.GONE);lv3.setVisibility(View.GONE);
+                        break;
+                    }
+                    case 2: {
+                        initdata(2);
+                        lv3.setVisibility(View.VISIBLE);lv2.setVisibility(View.GONE);lv1.setVisibility(View.GONE);
+                        break;
+                    }
+                }
             }
         });
         newlist = new ArrayList<order>();presentlist = new ArrayList<order>();pastlist = new ArrayList<order>();
@@ -91,6 +113,8 @@ public class Kitchenorder extends Fragment {
 
     private void initdata(int value)
     {
+        newlist.clear();presentlist.clear();pastlist.clear();
+
         String id=FirebaseAuth.getInstance().getUid();
         db.collection("order")
                 .whereEqualTo("kitchen_id",id)
@@ -129,7 +153,7 @@ public class Kitchenorder extends Fragment {
                                     if (presentlist!=null)
                                     {
                                         Orderitemadapter adapter1=new Orderitemadapter(getContext(),presentlist);
-                                        lv1.setAdapter(adapter1); adapter1.notifyDataSetChanged();
+                                        lv2.setAdapter(adapter1); adapter1.notifyDataSetChanged();
                                     }
                                     break;
                                 }
@@ -138,7 +162,7 @@ public class Kitchenorder extends Fragment {
                                     if (pastlist!=null)
                                     {
                                         Orderitemadapter adapter2=new Orderitemadapter(getContext(),pastlist);
-                                        lv1.setAdapter(adapter2); adapter2.notifyDataSetChanged();
+                                        lv3.setAdapter(adapter2); adapter2.notifyDataSetChanged();
                                     }
                                     break;
                                 }
