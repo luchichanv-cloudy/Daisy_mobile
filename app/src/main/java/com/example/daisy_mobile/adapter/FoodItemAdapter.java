@@ -2,6 +2,7 @@ package com.example.daisy_mobile.adapter;
 
 import android.content.Context;
 import android.net.Uri;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,9 @@ public class FoodItemAdapter extends ArrayAdapter<item> {
         if(item.isSalestatus())
         {
             int res=item.getPricesale();
-            tvprice.setText(Integer.toString(res));
+            String text = "<string name=\"line\">"+Integer.toString(item.getPricesale())+
+                    "$ <strike>"+Integer.toString(item.getPrice())+"$ </strike> </string>";
+            tvprice.setText(Html.fromHtml(text));
         }
         else
         {

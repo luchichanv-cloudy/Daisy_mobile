@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.daisy_mobile.R;
+import com.example.daisy_mobile.adapter.FoodItemAdapter;
 import com.example.daisy_mobile.adapter.TopkitchenViewpagerAdapter;
 import com.example.daisy_mobile.databinding.FragmentHomeBinding;
 import com.example.daisy_mobile.p05_searchresult;
@@ -30,10 +33,17 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
+import dataclass.item;
 import dataclass.kitchen;
 
 public class HomeFragment extends Fragment {
     public static String kitchen_display_id;
+    private ListView lv;
+    private FoodItemAdapter arrayAdapter;
+    private ArrayList<item> items;
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
     private FirebaseFirestore db;
@@ -128,7 +138,42 @@ public class HomeFragment extends Fragment {
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                textView.setText("Deals around you");
+            }
+        });
+        db=FirebaseFirestore.getInstance();
+
+        //get view for item sale list
+        lv=(ListView) root.findViewById(R.id.hf_lv);
+        items=new ArrayList<item>();
+        arrayAdapter=new FoodItemAdapter(getContext(),items);lv.setAdapter(arrayAdapter);
+
+        db.collection("item")
+                .whereEqualTo("salestatus",true)
+                .limit(10)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            int i=0;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                item abc=document.toObject(item.class);
+                                items.add(abc);
+                                arrayAdapter.notifyDataSetChanged();
+
+                            }
+                             } else {
+
+                        }
+                    }
+                });
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                p05_searchresult.display_id=items.get(i).getKitchenID();
+                p06_shopmenu.display_kitchenid=p05_searchresult.display_id;
+                startActivity(new Intent(getContext(),p06_shopmenu.class));
             }
         });
         return root;
