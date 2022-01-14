@@ -75,9 +75,11 @@
         <entry key="..\:/doancuoiki/app/src/main/res/layout/fooditem.xml" value="0.33" />
         <entry key="..\:/doancuoiki/app/src/main/res/layout/fragment_home.xml" value="0.18" />
         <entry key="..\:/doancuoiki/app/src/main/res/layout/fragment_kitchenorder.xml" value="0.1" />
+        <entry key="..\:/doancuoiki/app/src/main/res/layout/fragment_kitchensales.xml" value="0.18070652173913043" />
         <entry key="..\:/doancuoiki/app/src/main/res/layout/fragment_order.xml" value="0.21" />
         <entry key="..\:/doancuoiki/app/src/main/res/layout/fragment_p06_shopmenu.xml" value="0.1" />
         <entry key="..\:/doancuoiki/app/src/main/res/layout/fragment_settings.xml" value="0.34981458590852904" />
+        <entry key="..\:/doancuoiki/app/src/main/res/layout/item_kitchensales.xml" value="0.25" />
         <entry key="..\:/doancuoiki/app/src/main/res/layout/orderitem.xml" value="0.25" />
         <entry key="..\:/doancuoiki/app/src/main/res/layout/shopmenu_item.xml" value="0.2" />
         <entry key="..\:/doancuoiki/app/src/main/res/layout/smallitem.xml" value="0.22" />
