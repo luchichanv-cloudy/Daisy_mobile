@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -84,7 +85,16 @@ public class Orderitemadapter extends ArrayAdapter<order> {
         String id = FirebaseAuth.getInstance().getUid();
         order order= orders.get(position);
         Integer status=order.getStatus();
-
+        SmallitemAdapter adap=new SmallitemAdapter(getContext(),order.getList());
+        lv_item.setAdapter(adap);adap.notifyDataSetChanged();
+        if (order.getList().size()>4)
+        {
+            // set max height
+            LinearLayout llwidth=convertView.findViewById(R.id.llwidth);
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) llwidth.getLayoutParams();
+            params.height=180;
+            llwidth.setLayoutParams(params);
+        }
         //set value
         tv_timecreated.setText(order.getCreated());
       //  tv_othersidename.setText(order.getKitchen_id());
@@ -167,14 +177,16 @@ public class Orderitemadapter extends ArrayAdapter<order> {
         db.collection("order")
                 .whereEqualTo("user_id", a.getUser_id())
                 .whereEqualTo("kitchen_id",a.getKitchen_id())
+                .whereEqualTo("created",a.getCreated())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
+
                               db.collection("order").document(document.getId())
-                              .set(a);
+                              .update("status",value+1);
                             }
                         } else {
 

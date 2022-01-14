@@ -36,6 +36,7 @@ public class OrderFragment extends Fragment {
     private TabLayout tab;
     private OrderViewModel orderViewModel;
     private FragmentOrderBinding binding; private FirebaseFirestore db;
+    private Orderitemadapter adapter0,adapter1,adapter2;
     private ListView lv1,lv2,lv3; private ArrayList<order> newlist,presentlist,pastlist;
     private static final String TAG = "MyActivity";
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -45,6 +46,8 @@ public class OrderFragment extends Fragment {
         lv2=view.findViewById(R.id.lv_presentorder);
         lv3=view.findViewById(R.id.lv_pastorder);
         db=FirebaseFirestore.getInstance(); String id= FirebaseAuth.getInstance().getUid();
+        newlist = new ArrayList<order>();presentlist = new ArrayList<order>();pastlist = new ArrayList<order>();
+        initdata(0);
         tab=view.findViewById(R.id.tablayout);
         tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -100,8 +103,7 @@ public class OrderFragment extends Fragment {
                 }
             }
         });
-        newlist = new ArrayList<order>();presentlist = new ArrayList<order>();pastlist = new ArrayList<order>();
-        initdata(0); initdata(1); initdata(2);
+
         //goi data cho ba listview order
         return view;
     }
@@ -113,7 +115,7 @@ public class OrderFragment extends Fragment {
         String id=FirebaseAuth.getInstance().getUid();
         db.collection("order")
                 .whereEqualTo("user_id",id)
-                .whereEqualTo("status",value)
+
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -123,50 +125,57 @@ public class OrderFragment extends Fragment {
 
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                 order abc=document.toObject(order.class);
-                                newlist.add(abc);
-                                switch(value){
-                                    case 0:newlist.add(abc); break;
-                                    case 1:presentlist.add(abc); break;
-                                    case 2:pastlist.add(abc); break;
+                                if (abc.getStatus()==value)
+                                {
+                                    switch(value){
+                                        case 0:newlist.add(abc); break;
+                                        case 1:presentlist.add(abc); break;
+                                        case 2:pastlist.add(abc); break;
+
+                                    }
                                 }
 
                             }
-                            switch(value){
-                                case 0:
-                                {
-                                    if (newlist!=null)
-                                    {
-                                        Orderitemadapter adapter0=new Orderitemadapter(getContext(),newlist);
-                                        lv1.setAdapter(adapter0); adapter0.notifyDataSetChanged();
-                                    }
 
-                                    break;
-
-                                }
-                                case 1:
-                                {
-                                    if (presentlist!=null)
-                                    {
-                                        Orderitemadapter adapter1=new Orderitemadapter(getContext(),presentlist);
-                                        lv2.setAdapter(adapter1); adapter1.notifyDataSetChanged();
-                                    }
-                                    break;
-                                }
-                                case 2:
-                                {
-                                    if (pastlist!=null)
-                                    {
-                                        Orderitemadapter adapter2=new Orderitemadapter(getContext(),pastlist);
-                                        lv3.setAdapter(adapter2); adapter2.notifyDataSetChanged();
-                                    }
-                                    break;
-                                }
-                            }
                         } else {
                               Log.d(TAG, "Error getting documents: ", task.getException());
                         }
+                        switch(value){
+                            case 0:
+                            {
+                                if (newlist!=null)
+                                {
+
+                                    adapter0=new Orderitemadapter(getContext(),newlist);
+                                    lv1.setAdapter(adapter0); adapter0.notifyDataSetChanged();
+                                }
+
+                                break;
+
+                            }
+                            case 1:
+                            {
+                                if (presentlist!=null)
+                                {
+                                    adapter1=new Orderitemadapter(getContext(),presentlist);
+                                    lv2.setAdapter(adapter1); adapter1.notifyDataSetChanged();
+                                }
+                                break;
+                            }
+                            case 2:
+                            {
+                                if (pastlist!=null)
+                                {
+                                    adapter2=new Orderitemadapter(getContext(),pastlist);
+                                    lv3.setAdapter(adapter2); adapter2.notifyDataSetChanged();
+                                }
+                                break;
+                            }
+                        }
                     }
+
                 });
+
     }
     @Override
     public void onDestroyView() {

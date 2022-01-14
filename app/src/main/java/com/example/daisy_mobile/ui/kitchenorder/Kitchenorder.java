@@ -51,6 +51,10 @@ public class Kitchenorder extends Fragment {
         lv3=view.findViewById(R.id.lv_pastorder);
         db=FirebaseFirestore.getInstance(); String id= FirebaseAuth.getInstance().getUid();
         tab=view.findViewById(R.id.tablayout);
+        newlist = new ArrayList<order>();presentlist = new ArrayList<order>();pastlist = new ArrayList<order>();
+        newlist.clear();presentlist.clear();pastlist.clear();
+        initdata(0); lv1.setVisibility(View.VISIBLE); lv2.setVisibility(View.GONE); lv3.setVisibility(View.GONE);
+
         tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -105,8 +109,7 @@ public class Kitchenorder extends Fragment {
                 }
             }
         });
-        newlist = new ArrayList<order>();presentlist = new ArrayList<order>();pastlist = new ArrayList<order>();
-        initdata(0); initdata(1); initdata(2);
+
         return view;
 
     }
@@ -114,33 +117,42 @@ public class Kitchenorder extends Fragment {
     private void initdata(int value)
     {
         newlist.clear();presentlist.clear();pastlist.clear();
-
         String id=FirebaseAuth.getInstance().getUid();
         db.collection("order")
                 .whereEqualTo("kitchen_id",id)
-                .whereEqualTo("status",value)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                order abc=document.toObject(order.class);
-                                newlist.add(abc);
-                                switch(value){
-                                    case 0:newlist.add(abc); break;
-                                    case 1:presentlist.add(abc); break;
-                                    case 2:pastlist.add(abc); break;
-                                }
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                    if (document.exists() )
+                                    {
+                                        Log.d(TAG, document.getId() + " => " + document.getData());
+
+                                        order abc=document.toObject(order.class);
+                                        if (abc.getStatus()==value)
+                                        {
+                                            switch(value){
+                                                case 0:newlist.add(abc); break;
+                                                case 1:presentlist.add(abc); break;
+                                                case 2:pastlist.add(abc); break;
+
+                                            }
+                                        }
+
+
+
+                                    }
 
                             }
                             switch(value){
                                 case 0:
                                 {
-                                    if (newlist!=null)
+                                    if (newlist.size()>0)
                                     {
+
                                         Orderitemadapter adapter0=new Orderitemadapter(getContext(),newlist);
                                         lv1.setAdapter(adapter0); adapter0.notifyDataSetChanged();
                                     }
@@ -150,7 +162,7 @@ public class Kitchenorder extends Fragment {
                                 }
                                 case 1:
                                 {
-                                    if (presentlist!=null)
+                                    if (presentlist.size()>0)
                                     {
                                         Orderitemadapter adapter1=new Orderitemadapter(getContext(),presentlist);
                                         lv2.setAdapter(adapter1); adapter1.notifyDataSetChanged();
@@ -159,7 +171,7 @@ public class Kitchenorder extends Fragment {
                                 }
                                 case 2:
                                 {
-                                    if (pastlist!=null)
+                                    if (pastlist.size()>0)
                                     {
                                         Orderitemadapter adapter2=new Orderitemadapter(getContext(),pastlist);
                                         lv3.setAdapter(adapter2); adapter2.notifyDataSetChanged();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:background="@color/orangeyellow"
@@ -57,8 +57,10 @@
         app:layout_constraintTop_toBottomOf="@id/l1"
         app:layout_constraintStart_toStartOf="parent">
         <LinearLayout
+            android:id="@+id/llwidth"
             android:layout_width="match_parent"
-            android:layout_height="180dp">
+            android:layout_height="wrap_content"
+            >
             <ListView
                 android:id="@+id/lv_item"
             android:scrollbarAlwaysDrawVerticalTrack="true"
@@ -66,12 +68,13 @@
             android:scrollX="0px"
             android:scrollY="0px"
             android:layout_width="match_parent"
-            android:layout_height="180dp"/>
+
+            android:layout_height="wrap_content"/>
         </LinearLayout>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     >
     <TextView
