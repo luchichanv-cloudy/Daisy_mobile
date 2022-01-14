@@ -18,6 +18,9 @@ public class order {
         this.totalprice=totalprice;
     }
 
+    public order() {
+    }
+
     public int getStatus() {
         return status;
     }

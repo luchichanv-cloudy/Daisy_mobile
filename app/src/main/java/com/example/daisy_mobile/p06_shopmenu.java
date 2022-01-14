@@ -6,7 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +23,8 @@ import com.bumptech.glide.Glide;
 import com.example.daisy_mobile.adapter.FoodItemAdapter;
 import com.example.daisy_mobile.adapter.ShopItemAdapter;
 import com.example.daisy_mobile.adapter.TopkitchenViewpagerAdapter;
+import com.example.daisy_mobile.ui.order.OrderFragment;
+import com.example.daisy_mobile.ui.setting.SettingFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -54,9 +58,12 @@ public class p06_shopmenu extends AppCompatActivity {
     private TextView tv_kitchenname1, tv_kitchenname2;
     private ImageButton ib_favorite, ib_back;
     private Button btn_done;
+
+    private Activity myActivity;
     private ArrayList<Integer> quantity;
     private ShopItemAdapter adapter;
     private ListView lv_fooditem;
+
     private ImageView iv_kitchenimage;
     private ArrayList<item> arrayOfitem;
     private FirebaseFirestore db;
@@ -65,6 +72,7 @@ public class p06_shopmenu extends AppCompatActivity {
     {
      //   display_kitchenid="3vWBk5eX7lcjexVK0zVXLYPtFFq1";
       //  display_kitchenid=p05_searchresult.display_id;
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         user_id=user.getUid();
         btn_done=(Button)findViewById(R.id.btndone);
@@ -124,6 +132,7 @@ public class p06_shopmenu extends AppCompatActivity {
     }
     private void orderdetail()
     {
+
         Integer totalprice=0;
         ArrayList<order_item> list = new ArrayList<order_item>();
         for(int i=0;i< arrayOfitem.size();i++)
@@ -162,8 +171,10 @@ public class p06_shopmenu extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog,
                                                     int which)
                                 {
+
                                     db.collection("order").document().set(A);
-                                    dialog.cancel();
+                                    myActivity.startActivity(new Intent(myActivity,MainActivity.class));
+
                                 }
                             });
             builder
@@ -176,6 +187,7 @@ public class p06_shopmenu extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog,
                                                     int which)
                                 {
+
                                     dialog.cancel();
                                 }
                             });
@@ -246,7 +258,7 @@ public class p06_shopmenu extends AppCompatActivity {
         favoritestatus=false;
         init();
         initfirebase();
-
+        myActivity=this;
 
         ib_favorite.setOnClickListener(new View.OnClickListener() {
                                            @Override
@@ -265,12 +277,11 @@ public class p06_shopmenu extends AppCompatActivity {
                                        }
         );
 
-        btn_done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                orderdetail();
-            }
-        });
+      btn_done.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              orderdetail();
+          }
+      });
     }
 }

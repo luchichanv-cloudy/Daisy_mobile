@@ -13,6 +13,9 @@ public class order_item implements Serializable {
         this.price = price;
     }
 
+    public order_item() {
+    }
+
     public String getName() {
         return name;
     }

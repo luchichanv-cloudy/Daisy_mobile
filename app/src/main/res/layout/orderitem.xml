@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="180dp">
             <ListView
                 android:id="@+id/lv_item"
             android:scrollbarAlwaysDrawVerticalTrack="true"
@@ -66,7 +66,7 @@
             android:scrollX="0px"
             android:scrollY="0px"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="180dp"/>
         </LinearLayout>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -80,6 +80,7 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:text="Status here"
+        android:textColor="@color/orangeyellow"
         android:textSize="20dp"
         android:gravity="center_vertical"/>
     <Button
