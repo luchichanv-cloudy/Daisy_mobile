@@ -80,6 +80,7 @@ public class Orderitemadapter extends ArrayAdapter<order> {
         TextView tv_status=(TextView)convertView.findViewById(R.id.tv_status);
         ListView lv_item = (ListView) convertView.findViewById(R.id.lv_item);
         Button btn_dosomething = (Button) convertView.findViewById(R.id.btn_dosomething);
+        btn_dosomething.setTag(position);
         String id = FirebaseAuth.getInstance().getUid();
         order order= orders.get(position);
         Integer status=order.getStatus();
@@ -159,7 +160,8 @@ public class Orderitemadapter extends ArrayAdapter<order> {
     void update(int value,int position)
     {
         order a= orders.get(position);
-
+        orders.remove(position);
+        notifyDataSetChanged();
         a.setStatus(value+1);
         FirebaseFirestore db=FirebaseFirestore.getInstance();
         db.collection("order")
