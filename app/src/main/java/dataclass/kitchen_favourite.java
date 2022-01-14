@@ -6,7 +6,10 @@ public class kitchen_favourite {
         this.kitchenid=kitchenid;
         this.userid=userid;
     }
-    public kitchen_favourite(){}
+
+    public kitchen_favourite(){
+
+    }
     public void setKitchenid(String kitchenid) {
         this.kitchenid = kitchenid;
     }

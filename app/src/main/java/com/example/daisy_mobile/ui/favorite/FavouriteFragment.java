@@ -1,112 +1,91 @@
 package com.example.daisy_mobile.ui.favorite;
 
-import static com.example.daisy_mobile.p02_signin.user_id;
-
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import com.example.daisy_mobile.R;
-import com.example.daisy_mobile.adapter.FavouriteAdapter;
+import com.example.daisy_mobile.adapter.FavorAdapter;
 import com.example.daisy_mobile.databinding.FavouriteFragmentBinding;
-import com.example.daisy_mobile.databinding.FragmentHomeBinding;
-import com.example.daisy_mobile.databinding.FragmentOrderBinding;
-import com.example.daisy_mobile.p02_signin;
-import com.example.daisy_mobile.p16_favorite;
-import com.example.daisy_mobile.ui.home.HomeViewModel;
-import com.example.daisy_mobile.ui.order.OrderViewModel;
-import com.google.firebase.firestore.CollectionReference;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 import dataclass.kitchen;
 import dataclass.kitchen_favourite;
 
 public class FavouriteFragment extends Fragment {
-    private List<kitchen> kitchens = new ArrayList<>();
-    private  RecyclerView favourite_rcv;
-    private FavouriteAdapter adapter;
+
+    private ArrayList<kitchen> kitchens;
+    private ArrayList<kitchen_favourite> favourites;
+    private FavorAdapter adapter;
+    private ListView lv;
     private FirebaseFirestore db;
     private FavouriteViewModel mViewModel;
     private FavouriteFragmentBinding binding;
 
 
     private void initialDataFirebaseStore() {
-        CollectionReference collection = db.collection("favourite_kitchen");
-        String userId= p02_signin.user_id;
-        Query findFavorite = collection.whereEqualTo("user_id", userId);
+        String user_id = FirebaseAuth.getInstance().getUid();
+        kitchens=new ArrayList<kitchen>();  favourites=new ArrayList<kitchen_favourite>();
+
+        db=FirebaseFirestore.getInstance();
         db.collection("favourite_kitchen")
-                .whereEqualTo("user_id",user_id)
-                .get()
-        .addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                List<kitchen_favourite> favourites = new ArrayList<>();
-                for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                    favourites.add(new kitchen_favourite(Objects.requireNonNull(document.get("kitchen_id")).toString(), Objects.requireNonNull(document.get("user_id")).toString()));
-                }
+                .whereEqualTo("userid",user_id)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful())
+                {
 
-                if (favourites.size() > 0) {
-                    for (kitchen_favourite favourite : favourites) {
-                        CollectionReference kitchenCollection = db.collection("kitchens");
-                        Query findKitchen = kitchenCollection.whereEqualTo("kitchenId", favourite.getKitchenid());
-
-                        findKitchen.get().addOnCompleteListener(taskKitchen -> {
-                            if (taskKitchen.isSuccessful()) {
-                                for (QueryDocumentSnapshot documentk : Objects.requireNonNull(taskKitchen.getResult())) {
-                                    kitchens.add(new kitchen(Objects.requireNonNull(documentk.get("kitchenId")).toString(),
-                                            Objects.requireNonNull(documentk.get("name")).toString(),
-                                          //  documentk.get("imageID").toString(),
-                                            Objects.requireNonNull(documentk.get("address")).toString(),
-                                            Objects.requireNonNull(documentk.get("email")).toString(),
-                                            Objects.requireNonNull(documentk.get("phonenumber")).toString(),documentk.get("imageID").toString(),0
-                                    ));
+                    for (QueryDocumentSnapshot document:task.getResult())
+                    {
+                        if (document.exists())
+                        {
+                            kitchen_favourite a=document.toObject(kitchen_favourite.class);
+                            favourites.add(a);
+                            db.collection("kitchens").document(a.getKitchenid())
+                                    .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task1) {
+                                    if (task1.isSuccessful())
+                                    {
+                                        DocumentSnapshot doc=task1.getResult();
+                                        kitchen b=doc.toObject(kitchen.class);
+                                        kitchens.add(b);
+                                        adapter = new FavorAdapter(getContext(),kitchens);
+                                        lv.setAdapter(adapter); adapter.notifyDataSetChanged();
+                                    }
                                 }
+                            });
 
-                                if (kitchens.size() > 0) {
-                                    adapter = new FavouriteAdapter(kitchens, getContext());
-                                    favourite_rcv.setLayoutManager(new LinearLayoutManager(getContext()));
-                                    favourite_rcv.setAdapter(adapter);
-                                }
-                            }
-
-                        });
-
+                        }
                     }
                 }
-
-
             }
         });
+
+
     }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        mViewModel =
-                new ViewModelProvider(this).get(FavouriteViewModel.class);
-
-        binding = FavouriteFragmentBinding.inflate(inflater, container, false);
-
-        View root = binding.getRoot();
+        View root = inflater.inflate(R.layout.favourite_fragment, container, false);
         db = FirebaseFirestore.getInstance();
-        favourite_rcv = (root).findViewById(R.id.favourite_rcv);
-
+        lv=(ListView)root.findViewById(R.id.favourite_lv);
         initialDataFirebaseStore();
         return root;
 

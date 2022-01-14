@@ -29,8 +29,8 @@
             android:textSize="24sp"
             android:textColor="@color/white" />
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favourite_rcv"
+    <ListView
+        android:id="@+id/favourite_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
