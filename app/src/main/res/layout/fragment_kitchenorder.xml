@@ -1,16 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.kitchenorder.Kitchenorder"
     >
--
-   <Button
-       android:layout_marginTop="50dp"
-       android:id="@+id/btnnext"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="hello"></Button>
+   <com.google.android.material.tabs.TabLayout
+       android:id="@+id/tablayout"
+       android:layout_width="match_parent"
+       android:layout_height="25dp"
+       >
+      <com.google.android.material.tabs.TabItem
+          android:layout_width="200dp"
+          android:layout_height="match_parent"
+          android:text="New order"/>
+      <com.google.android.material.tabs.TabItem
+          android:layout_width="200dp"
+          android:layout_height="match_parent"
+          android:text="Present order"/>
+      <com.google.android.material.tabs.TabItem
+          android:layout_width="200dp"
+          android:layout_height="match_parent"
+          android:text="Past order"/>
+   </com.google.android.material.tabs.TabLayout>
+   <ListView
+       android:id="@+id/lv_neworder"
+       android:layout_width="match_parent"
+       android:layout_height="300dp"
+       android:scrollX="0dp"
+       android:scrollY="0dp"
+       android:scrollbarAlwaysDrawVerticalTrack="true"
+       android:scrollbars="vertical" />
+
+   <ListView
+       android:id="@+id/lv_pastorder"
+       android:layout_width="match_parent"
+       android:layout_height="300dp"
+       android:scrollX="0dp"
+       android:scrollY="0dp"
+       android:scrollbarAlwaysDrawVerticalTrack="true"
+       android:scrollbars="vertical" />
+   <ListView
+       android:id="@+id/lv_presentorder"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:scrollX="0dp"
+       android:scrollY="0dp"
+       android:scrollbarAlwaysDrawVerticalTrack="true"
+       android:scrollbars="vertical" />
 
 </LinearLayout>

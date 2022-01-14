@@ -2,6 +2,7 @@ package com.example.daisy_mobile.adapter;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -63,32 +66,10 @@ public class Orderitemadapter extends ArrayAdapter<order> {
         });
     }
 
-    private kitchen getkitchen(String kitchenid)
-    {
-        aaa=new kitchen();
-        FirebaseFirestore db=FirebaseFirestore.getInstance();
-        DocumentReference documentRef = db.document("kitchens/"+kitchenid);
-        documentRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        aaa=document.toObject(kitchen.class);
-
-                    }
-                }
-            }
-        });
-        return  aaa;
-    }
-    private user getuser(String userid)
-    {
-       return null;
-    }
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.orderitem, parent, false);
         }
@@ -108,36 +89,97 @@ public class Orderitemadapter extends ArrayAdapter<order> {
       //  tv_othersidename.setText(order.getKitchen_id());
         if(id.equals(order.getKitchen_id()))
         {
-            getimage(order.getUser_id(),iv_avatar);
-          //  tv_othersidename.setText(getuser(order.getUser_id()).getName());
+            String d=order.getUser_id();
+            //get user
+            FirebaseFirestore db=FirebaseFirestore.getInstance();
+            DocumentReference documentRef = db.document("users/"+d);
+            documentRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            user abc= document.toObject(user.class);
+                           tv_othersidename.setText(abc.getName());
+                            getimage(abc.getImageID(),iv_avatar);
+                        }
+                    }
+                }
+            });
+            //get user
+
             switch (status){
-                case 0:  tv_status.setText("You have new order"); btn_dosomething.setText("Accept");
-                case 1: tv_status.setText("Your customer is waiting for you"); btn_dosomething.setText("Done");
-                case 2: tv_status.setText("Your order has been delivered"); btn_dosomething.setVisibility(View.GONE);
+                case 0:  tv_status.setText("You have new order"); btn_dosomething.setText("Accept"); break;
+                case 1: tv_status.setText("Your customer is waiting for you"); btn_dosomething.setText("Done"); break;
+                case 2: tv_status.setText("Your order has been delivered"); btn_dosomething.setVisibility(View.GONE); break;
             }
         }
         else if(id.equals(order.getUser_id()))
         {
-            tv_othersidename.setText(getkitchen(order.getUser_id()).getName());
-            getimage(getkitchen(order.getUser_id()).getImageID(),iv_avatar);
+            String d=order.getKitchen_id();
+            //get kitchen
+            FirebaseFirestore db=FirebaseFirestore.getInstance();
+            DocumentReference documentRef = db.document("kitchens/"+d);
+            documentRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            kitchen abc= document.toObject(kitchen.class);
+                            tv_othersidename.setText(abc.getName());
+                            getimage(abc.getImageID(),iv_avatar);
+                        }
+                    }
+                }
+            });
+            //get kitchen
 
             btn_dosomething.setVisibility(View.INVISIBLE);
             switch (status){
-                case 0:  tv_status.setText("Your order is sending to kitchen");
-                case 1: tv_status.setText("Kitchen is preparing your order");
-                case 2: tv_status.setText("Your order has been delivered");
+                case 0:  tv_status.setText("Your order is sending to kitchen"); break;
+                case 1: tv_status.setText("Kitchen is preparing your order"); break;
+                case 2: tv_status.setText("Your order has been delivered"); break;
             }
         }
 
         btn_dosomething.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                switch (status){
+                    case 0: update(0,position); break;
+                    case 1:  update(1,position);break;
+                    case 2:  break;
+                }
             }
         });
         return convertView;
     }
 
+    void update(int value,int position)
+    {
+        order a= orders.get(position);
+
+        a.setStatus(value+1);
+        FirebaseFirestore db=FirebaseFirestore.getInstance();
+        db.collection("order")
+                .whereEqualTo("user_id", a.getUser_id())
+                .whereEqualTo("kitchen_id",a.getKitchen_id())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                              db.collection("order").document(document.getId())
+                              .set(a);
+                            }
+                        } else {
+
+                        }
+                    }
+                });
+    }
     @NonNull
     @Override
     public Context getContext() {
@@ -155,5 +197,6 @@ public class Orderitemadapter extends ArrayAdapter<order> {
     public void setOrders(ArrayList<order> orders) {
         this.orders = orders;
     }
+
 
 }
