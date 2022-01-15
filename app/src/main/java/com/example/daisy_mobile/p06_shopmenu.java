@@ -145,6 +145,9 @@ public class p06_shopmenu extends AppCompatActivity {
                 itemname=arrayOfitem.get(i).getName();
                 itemid=arrayOfitem.get(i).getImageID();
                 itemprice=arrayOfitem.get(i).getPrice();
+                if (arrayOfitem.get(i).isSalestatus()) {
+                    itemprice=arrayOfitem.get(i).getPricesale();
+                }
                 totalprice=totalprice+itemprice*quantity;
                 order_item aaa=new order_item(itemname,itemid,quantity,itemprice);
                 list.add(aaa);

@@ -1,14 +1,14 @@
 package dataclass;
 
 public class kitchen {
-    private String kitchenId, Name, Address, Email, Phonenumber, ImageID;
+    private String Name, Address, Email, Phonenumber, ImageID;
     private int vote;
 
     public kitchen() {
     }
 
-    public kitchen(String kitchenId, String name, String address, String email, String phonenumber, String imageID, int vote) {
-        this.kitchenId = kitchenId;
+    public kitchen( String name, String address, String email, String phonenumber, String imageID, int vote) {
+
         Name = name;
         Address = address;
         Email = email;
@@ -18,20 +18,13 @@ public class kitchen {
     }
 
     public kitchen(String kitchenId, String name, String address, String email, String phonenumber) {
-        this.kitchenId = kitchenId;
+
         Name = name;
         Address = address;
         Email = email;
         Phonenumber = phonenumber;
     }
 
-    public String getKitchenId() {
-        return kitchenId;
-    }
-
-    public void setKitchenId(String kitchenId) {
-        this.kitchenId = kitchenId;
-    }
 
     public String getName() {
         return Name;

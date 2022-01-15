@@ -26,6 +26,7 @@ import com.example.daisy_mobile.p28_addnewitem;
 import com.example.daisy_mobile.ui.home.HomeViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -52,7 +53,7 @@ public class Kitchenmenu extends Fragment {
 
 
 
-
+        user_id= FirebaseAuth.getInstance().getUid();
         lv =(ListView) view.findViewById(R.id.kitchenmenu_lv);
             db = FirebaseFirestore.getInstance();
             db.collection("item")
